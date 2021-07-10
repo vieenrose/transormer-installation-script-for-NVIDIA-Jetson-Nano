@@ -29,12 +29,12 @@ fi
 sudo ln -s llvm-config-8 llvm-config
 
 # download pytorch wheel
-pytorch_file='torch-1.2.0a0+8554416-cp36-cp36m-linux_aarch64.whl'
+pytorch_file='torch-1.4.0-cp36-cp36m-linux_aarch64.whl'
 if [ ! -f $pytorch_file ]; then
-	wget https://nvidia.box.com/shared/static/06vlvedmqpqstu1dym49fo7aapgfyyu9.whl -O torch-1.2.0a0+8554416-cp36-cp36m-linux_aarch64.whl
+	wget https://nvidia.box.com/shared/static/ncgzus5o23uck9i5oth2n8n06k340l6k.whl -O $pytorch_file
 fi
 
-# then you can install other dependencies for torchaudio via pip
+# then you can install other dependencies for transformers via pip
 curl https://sh.rustup.rs -sSf | sh
 export PATH=$PATH:~/.cargo/bin
 python3 -m pip install -r requirements.txt
