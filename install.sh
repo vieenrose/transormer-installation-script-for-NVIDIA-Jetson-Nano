@@ -1,5 +1,10 @@
 #! /bin/sh
 
+#set -vx
+
+sudo apt clean
+python3 -m pip cache purge
+
 # install jetsonUtilities, a tool to find JetPack version
 if [ ! -d "jetsonUtilities" ]; then
 	git clone https://github.com/jetsonhacks/jetsonUtilities.git
@@ -27,12 +32,14 @@ if [ -L "llvm-config" ]; then
 	sudo rm "llvm-config"
 fi
 sudo ln -s llvm-config-8 llvm-config
-
-# download pytorch wheel
-pytorch_file='torch-1.4.0-cp36-cp36m-linux_aarch64.whl'
+cd -
+# install pytorch
+pytorch_file='torch-1.2.0a0+8554416-cp27-cp27mu-linux_aarch64.whl'
+pytorch_fileUrl='https://nvidia.box.com/shared/static/06vlvedmqpqstu1dym49fo7aapgfyyu9.whl'
 if [ ! -f $pytorch_file ]; then
-	wget https://nvidia.box.com/shared/static/ncgzus5o23uck9i5oth2n8n06k340l6k.whl -O $pytorch_file
+	wget $pytorch_fileUrl -O $pytorch_file
 fi
+python3 -m pip install $pytorch_file
 
 # then you can install other dependencies for transformers via pip
 curl https://sh.rustup.rs -sSf | sh
@@ -46,6 +53,6 @@ fi
 
 # and jetsonUtilities
 if [ -d "jetsonUtilities" ]; then
-rm "jetsonUtilities"
+rm -rf "jetsonUtilities"
 fi
 
