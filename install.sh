@@ -3,7 +3,7 @@
 #set -vx
 
 sudo apt clean
-python3 -m pip cache purge
+#python3 -m pip cache purge
 
 # install jetsonUtilities, a tool to find JetPack version
 if [ ! -d "jetsonUtilities" ]; then

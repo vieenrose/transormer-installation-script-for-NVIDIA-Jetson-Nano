@@ -6,7 +6,7 @@ librosa
 jiwer
 cmake
 Cython
-git+git://github.com/pytorch/audio.git@v0.4.0#egg=torchaudio
+git+git://github.com/pytorch/audio.git@v0.3.0#egg=torchaudio
 ffmpeg-python
 git+https://github.com/huggingface/datasets.git
 git+https://github.com/huggingface/transformers.git
