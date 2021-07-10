@@ -21,9 +21,12 @@ echo "You have the right version to go :)"
 sudo apt install -y cmake sox libsox-dev
 
 # first install llvm
-sudo apt-get install -y llvm-7 llvm-7-dev
+sudo apt-get install -y llvm-8 llvm-8-dev
 cd /usr/bin
-sudo ln -s llvm-config-7 llvm-confi
+if [ -L "llvm-config" ]; then
+	sudo rm "llvm-config"
+fi
+sudo ln -s llvm-config-8 llvm-config
 
 # download pytorch wheel
 pytorch_file='torch-1.2.0a0+8554416-cp36-cp36m-linux_aarch64.whl'
